@@ -5,13 +5,25 @@
 
 def read_file_content(filename):
     # [assignment] Add your code here 
-    with open(filename, "a+") as f:
-        f.write("Hello world")
-    return "Hello World"
+   with open(filename) as f:
+    lines = f.read()
+    f.close()
+
+    return lines
 
 
 def count_words():
-    text = read_file_content("./story.txt")
+    text = read_file_content("/Users/blackman147/PycharmProjects/flask_docker/zuri_projects /Reading-Text-Files/story.txt")
     # [assignment] Add your code here
+    values = text.split()
+    word_count = {}
+    for value in values:
+        if value in word_count:
+            word_count[value] = word_count.get(value) + 1
+        else:
+            word_count[value] = 1
 
-    return {"as": 10, "would": 20}
+    return word_count
+
+
+print(count_words())
